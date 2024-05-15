@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Column Layout with Nested Rows</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .column {
+            flex: 1;
+            /* padding: 10px; */
+            position: relative; /* Ensure relative positioning for absolute child */
+        }
+        .column img {
+            /* max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px; */
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row img {
+            /* flex: 1; */
+            margin-right: 5px;
+        }
+        .image-two {
+            height: 250px;
+            width: 300px;
+            border-radius: 10px;
+            transition: transform .2s;
+        }
+        .image-one {
+            height: 504px;
+            width: 632px;
+            border-radius: 10px;
+            transition: transform .2s;
+        }
+        .image-two:hover {
+            -ms-transform: scale(1.5); /* IE 9 */
+            -webkit-transform: scale(1.5); /* Safari 3-8 */
+            transform: scale(1.1); 
+        }
+        .image-one:hover {
+            -ms-transform: scale(1.5); /* IE 9 */
+            -webkit-transform: scale(1.5); /* Safari 3-8 */
+            transform: scale(1.1); 
+        }
+
+        .text-recruitment {
+            position: absolute;
+            display: inline-flex;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.2s ease-in-out;
+            z-index: 1; /* Ensure the text is above the image */
+        }
+        
+        .recruitment-p{
+            margin-top: 54px;
+            margin-left: -65px;
+        }
+        .recruitment-bt{
+            height: 20px;
+            margin-top: 61px;
+            margin-left:8px;
+        }
+
+        .column:hover .text-recruitment {
+            opacity: 1; /* Show on hover */
+        }
+
+        .recruitment-a{
+            margin: 4px;
+            display: flex;
+            text-decoration: none;
+            padding: 26px;
+            border: 1px solid #CDCDCD;
+            border-radius: 3px;
+        }
+        .recruitment-a:hover {
+            border: 1px solid #fff0;
+            box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+            border-radius: 3px;
+
+        }
+        .recruitment-img{
+            height: 50px;
+            width: 50px;
+        }
+
+        .recruitment-cate{
+            justify-content: space-around;
+            padding: 20px;
+            /* max-width: 1170px; */
+            /*   display: flex; */
+            /*   flex-wrap: wrap; */
+            /*   justify-content: center; */
+            /* gap: 20px; */
+            /*   row-gap: 20px; */
+            /* display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+            width: 100%; */
+        }
+
+        .recruitment-card{
+            height: 115px;
+            width: 301px;
+        }
+
+        .find-button{
+            background-color: red;
+            height: 100px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .find-job{
+
+            /* border-right: 1px solid black;
+            rotate: 10; */
+        }
+
+        .find-a{
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 767px) { 
+        /* CSS rules for mobile devices */
+            .image-two {
+                height: 74px;
+                width: 96px;
+                border-radius: 10px;
+                transition: transform .2s;
+            }
+            .image-one {
+                height: 150px;
+                /* width: 160px; */
+                width: 143px;
+                border-radius: 10px;
+                transition: transform .2s;
+            }
+            .image-two:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+            .image-one:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+
+            .recruitment-cate{
+                justify-content: space-around;
+                padding: 20px;
+                display: grid;
+                /* grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));*/
+            }
+            .text-recruitment {
+                position: absolute;
+                display: inline-flex;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: white;
+                font-size: 7px;
+                opacity: 0; /* Initially hidden */
+                transition: opacity 0.2s ease-in-out;
+                z-index: 1; /* Ensure the text is above the image */
+            }
+
+            .recruitment-p{
+                margin-top: 19px;
+                margin-left: -19px;
+            }
+            .recruitment-bt{
+                font-size: 6px;
+                height: 13px;
+                margin-top: 14px;
+                margin-left: 4px;
+            }
+
+            .recruitment-responsive{
+                display: ruby-text;
+            }
+
+
+
+            .find-button{
+                background-color: red;
+                height: 120px;
+                padding: 5px;
+                border-radius: 5px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                display: block;
+            }
+            .button-find {
+                margin-top: 7px !important;
+                margin-left: 47px;
+                width: 280px !important;
+            }
+
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 991px) { 
+
+        /* CSS rules for tablets */
+        .image-two {
+            height: 123px;
+            width: 191px;
+            border-radius: 10px;
+            transition: transform .2s;
+        }
+            .image-one {
+                height: 250px;
+                width: 361px;
+                border-radius: 10px;
+                transition: transform .2s;
+            }
+            .image-two:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+            .image-one:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+
+            .recruitment-cate{
+                justify-content: space-around;
+                padding: 20px;
+                display: ruby-text;
+                
+            }
+            .text-recruitment {
+                position: absolute;
+                display: inline-flex;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: white;
+                font-size: 7px;
+                opacity: 0; /* Initially hidden */
+                transition: opacity 0.2s ease-in-out;
+                z-index: 1; /* Ensure the text is above the image */
+            }
+
+            .recruitment-p{
+                margin-top: 19px;
+                margin-left: -19px;
+            }
+            .recruitment-bt{
+                font-size: 6px;
+                height: 13px;
+                margin-top: 14px;
+                margin-left: 4px;
+            }
+
+            .recruitment-responsive{
+                display: ruby-text;
+            }
+
+            .button-find {
+                margin-left: 44px !important;
+                width: 283px !important;
+            }
+        }
+
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+        /* CSS rules for desktops */
+
+        .image-two {
+            height: 147px;
+            width: 250px;
+            border-radius: 10px;
+            transition: transform .2s;
+        }
+            .image-one {
+                height: 300px;
+                width: 479px;
+                border-radius: 10px;
+                transition: transform .2s;
+            }
+            .image-two:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+            .image-one:hover {
+                -ms-transform: scale(1.5); /* IE 9 */
+                -webkit-transform: scale(1.5); /* Safari 3-8 */
+                transform: scale(1.1); 
+            }
+
+            .recruitment-cate{
+                justify-content: space-around;
+                padding: 20px;
+                /* display: ruby-text; */
+                
+            }
+            .text-recruitment {
+                position: absolute;
+                display: inline-flex;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: white;
+                font-size: 7px;
+                opacity: 0; /* Initially hidden */
+                transition: opacity 0.2s ease-in-out;
+                z-index: 1; /* Ensure the text is above the image */
+            }
+
+            .recruitment-p{
+                margin-top: 19px;
+                margin-left: -19px;
+            }
+            .recruitment-bt{
+                font-size: 6px;
+                height: 13px;
+                margin-top: 14px;
+                margin-left: 4px;
+            }
+            .recruitment-card {
+                height: 115px;
+                width: 242px;
+            }
+
+            .recruitment-responsive{
+                display: ruby-text;
+            }
+
+            .button-find {
+                margin-left: 70px !important;
+                width: 283px !important;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+        /* CSS rules for large desktops */
+        }
+
+
+
+        .button-find {
+            appearance: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            isolation: isolate;
+            margin-top: 27px;
+            margin-left: 55px;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 500;
+            width: 490px;
+            border-radius: 9999rem;
+            background: #efefef;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .button-find > span.text {
+            font-weight: bolder;
+            color: #121212;
+            width: 100%;
+            text-align: center;
+            padding-block: 12px;
+            padding-left: 24px;
+            z-index: 2;
+            transition: all 200ms ease;
+        }
+        .button-find > div.overlay {
+            color: #ededed;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: inherit;
+            background: #242424;
+            position: absolute;
+            left: 1px;
+            z-index: 1;
+            transition: all 400ms ease;
+        }
+        .button-find:hover > span.text {
+            color: #ededed;
+        }
+        .button-find:hover > div.overlay {
+            width: calc(100% - 2px);
+            transition: width 200ms ease;
+        }
+       /* Modal Styling */
+        .modal-recruitment {
+        display: none; /* Hide modal by default */
+        position: fixed;
+        z-index: 999; /* Make sure it appears above everything */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+        }
+
+        .modal-content-recruitment {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        /* Form Styling */
+        form {
+        display: flex;
+        flex-direction: column;
+        }
+
+        form label {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+        }
+
+        form input,
+        form textarea,
+        form button {
+        margin-top: 5px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        }
+
+        form input:focus,
+        form textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        outline: none;
+        }
+
+        form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+        background-color: #0056b3;
+        }
+
+        form textarea {
+        resize: vertical;
+        }
+
+        form .submit-btn {
+        margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <!-- find button -->
+        <div class="row find-button">
+            <div class="column col-md-6 col-sm-12 find-job">
+                <a class="find-a" href="javascript:void(0);" onclick="openModal('modalDreamJobs')">
+                    <button class="button-find">
+                        <span class="text">Find Your Dream jobs</span>
+                        <div class="overlay">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </div>
+                    </button>
+                </a>
+            </div>
+            <div class="column">
+                <a class="find-a" href="javascript:void(0);" onclick="openModal('modalPerfectEmploy')">
+                    <button class="button-find">
+                        <span class="text">Find Your Perfect employ</span>
+                        <div class="overlay">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </div>
+                    </button>
+                </a>
+            </div>
+        </div>
+          <!-- Modals -->
+        <div id="modalDreamJobs" class="modal-recruitment">
+            <div class="modal-content-recruitment">
+                <span class="close" onclick="closeModal('modalDreamJobs')">&times;</span>
+                <h1 class="" style="text-align: center;">Find A Suitable Job</h1>
+                <form class="form" id="dreamJobForm">
+                    <label for="dreamJobFullName">Full Name:</label>
+      <input type="text" id="dreamJobFullName" name="fullName" required>
+      <label for="dreamJobEmail">Your Email:</label>
+      <input type="email" id="dreamJobEmail" name="email" required>
+      <label for="dreamJobAddress">Address:</label>
+      <input type="text" id="dreamJobAddress" name="address">
+      <label for="dreamJobPhone">Your Phone:</label>
+      <input type="tel" id="dreamJobPhone" name="phone">
+      <label for="dreamJobResume">Upload Resume:</label>
+      <input type="file" id="dreamJobResume" name="resume" required>
+      <label for="dreamJobEducation">Education:</label>
+      <input type="text" id="dreamJobEducation" name="education">
+      <label for="dreamJobJoinDate">Join Date:</label>
+      <input type="date" id="dreamJobJoinDate" name="joinDate">
+      <label for="dreamJobExperience">Work Experience:</label>
+      <input type="text" id="dreamJobExperience" name="experience">
+      <label for="dreamJobReference">Reference:</label>
+      <input type="text" id="dreamJobReference" name="reference">
+      <label for="dreamJobSalary">Expect Salary:</label>
+      <input type="text" id="dreamJobSalary" name="salary">
+      <label for="dreamJobPortfolio">Portfolio Link:</label>
+      <input type="url" id="dreamJobPortfolio" name="portfolio">
+      <label for="dreamJobComment">Additional Comment:</label>
+      <textarea id="dreamJobComment" name="comment"></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div id="modalPerfectEmploy" class="modal-recruitment">
+            <div class="modal-content-recruitment">
+                <span class="close" onclick="closeModal('modalPerfectEmploy')">&times;</span>
+                <h1 class="" style="text-align: center;">Post A Job: Find Skilled Employee</h1>
+                <form id="perfectEmployeeForm">
+                    <label for="employeeRecruiterName">Recruiter's Name:</label>
+      <input type="text" id="employeeRecruiterName" name="recruiterName" required>
+      <label for="employeeCompanyName">Company Name:</label>
+      <input type="text" id="employeeCompanyName" name="companyName" required>
+      <label for="employeeJobTitle">Job Title/Position:</label>
+      <input type="text" id="employeeJobTitle" name="jobTitle" required>
+      <label for="employeeDescription">Job Description:</label>
+      <textarea id="employeeDescription" name="description" required></textarea>
+      <label for="employeeLocation">Location:</label>
+      <input type="text" id="employeeLocation" name="location" required>
+      <label for="employeeJoinDate">Join Date:</label>
+      <input type="date" id="employeeJoinDate" name="joinDate" required>
+      <label for="employeeSalaryRange">Salary Range:</label>
+      <input type="text" id="employeeSalaryRange" name="salaryRange" required>
+      <label for="employeeRecruiterEmail">Recruiter's Email:</label>
+      <input type="email" id="employeeRecruiterEmail" name="recruiterEmail" required>
+      <label for="employeeEducationalReq">Educational Requirement:</label>
+      <input type="text" id="employeeEducationalReq" name="educationalReq" required>
+      <label for="employeeSkills">Skills / Qualifications:</label>
+      <input type="text" id="employeeSkills" name="skills" required>
+      <label for="employeeDeadline">Applications Deadline:</label>
+      <input type="datetime-local" id="employeeDeadline" name="deadline" required>
+      <label for="employeeRecruitmentProcess">Recruitment Process:</label>
+      <textarea id="employeeRecruitmentProcess" name="recruitmentProcess" required></textarea>
+      <label for="employeeContactInfo">Contact Information:</label>
+      <input type="text" id="employeeContactInfo" name="contactInfo" required>
+      <label for="employeeCultureValues">Company Culture/Values:</label>
+      <textarea id="employeeCultureValues" name="cultureValues" required></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-xxl py-5">
+            <div style="text-align: center; font-size: xx-large;">
+                <h1>Make your dreams a reality</h1>
+            </div>
+            <div class="container recruitment-responsive">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="column">
+                            <a href="">
+                                <img class="image-one" src="img/1.png" alt="">
+                            <div class="text-recruitment">
+                                <h3 class="recruitment-h">Sazal</h3>
+                                <p class="recruitment-p">abdullahgfrrrrr</p>
+                                <button class="recruitment-bt">More</button>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/2.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/3.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/4.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/5.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div style="text-align: center; font-size: xx-large;">
+            <h1>Get work different categories</h1>
+        </div>
+        <div class="row recruitment-cate">
+                <div class="col-lg-3 col-md-6">
+                <div class="recruitment-card">
+                   <a class="recruitment-a" href="">
+                    <img class="recruitment-img" src="img/job1.png" alt="">
+                    <h3>Product Promotion</h3>
+                   </a>
+                </div>
+                <div class="recruitment-card">
+                   <a class="recruitment-a" href="">
+                    <img class="recruitment-img" src="img/job2.png" alt="">
+                    <h3>Product IT Support</h3>
+                   </a>
+                </div>
+                <div class="recruitment-card">
+                   <a class="recruitment-a" href="">
+                    <img class="recruitment-img" src="img/job3.png" alt="">
+                    <h3>Sales Employee</h3>
+                   </a>
+                </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job7.png" alt="">
+                     <h3>Kitchen porter</h3>
+                    </a>
+                 </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job4.png" alt="">
+                         <h3>Administrative </h3>
+                        </a>
+                     </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job5.png" alt="">
+                         <h3>Waiter / waitress</h3>
+                        </a>
+                     </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job6.png" alt="">
+                         <h3>All-round warehouse </h3>
+                        </a>
+                     </div>
+                     <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job2.png" alt="">
+                         <h3>All-round store </h3>
+                        </a>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6">
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job7.png" alt="">
+                         <h3>Sampling</h3>
+                        </a>
+                    </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job1.png" alt="">
+                         <h3>Cashier</h3>
+                        </a>
+                     </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job2.png" alt="">
+                         <h3>Order picker</h3>
+                        </a>
+                     </div>
+                     <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job7.png" alt="">
+                         <h3>IT Support</h3>
+                        </a>
+                     </div>
+                 </div>
+                 <div class="col-lg-3 col-md-6">
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job3.png" alt="">
+                         <h3>Cashier</h3>
+                        </a>
+                     </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job4.png" alt="">
+                         <h3>Sales Employee</h3>
+                        </a>
+                     </div>
+                    <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job5.png" alt="">
+                         <h3>Cook</h3>
+                        </a>
+                     </div>
+                     <div class="recruitment-card">
+                        <a class="recruitment-a" href="">
+                         <img class="recruitment-img" src="img/job3.png" alt="">
+                         <h3>Kitchen porter</h3>
+                        </a>
+                     </div>
+                 </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-xxl py-5">
+            <div style="text-align: center; font-size: xx-large;">
+                <h1>Find Your perfect Employ</h1>
+            </div>
+            <div class="container recruitment-responsive">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/6.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/7.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/8.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="column">
+                                    <a href="">
+                                        <img class="image-two" src="img/9.png" alt="">
+                                    <div class="text-recruitment">
+                                        <h3 class="recruitment-h">Sazal</h3>
+                                        <p class="recruitment-p">abdullahgfrrrrr</p>
+                                        <button class="recruitment-bt">More</button>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="column">
+                            <a href="">
+                                <img class="image-one" src="img/10.png" alt="">
+                            <div class="text-recruitment">
+                                <h3 class="recruitment-h">Sazal</h3>
+                                <p class="recruitment-p">abdullahgfrrrrr</p>
+                                <button class="recruitment-bt">More</button>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div style="text-align: center; font-size: xx-large;">
+            <h1>Browse top job categories</h1>
+        </div>
+        <div class="row recruitment-cate">
+            <div class="col-lg-3 col-md-6">
+            <div class="recruitment-card">
+               <a class="recruitment-a" href="">
+                <img class="recruitment-img" src="img/job1.png" alt="">
+                <h3>Product Promotion</h3>
+               </a>
+            </div>
+            <div class="recruitment-card">
+               <a class="recruitment-a" href="">
+                <img class="recruitment-img" src="img/job2.png" alt="">
+                <h3>Product IT Support</h3>
+               </a>
+            </div>
+            <div class="recruitment-card">
+               <a class="recruitment-a" href="">
+                <img class="recruitment-img" src="img/job3.png" alt="">
+                <h3>Sales Employee</h3>
+               </a>
+            </div>
+            <div class="recruitment-card">
+                <a class="recruitment-a" href="">
+                 <img class="recruitment-img" src="img/job7.png" alt="">
+                 <h3>Kitchen porter</h3>
+                </a>
+             </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job4.png" alt="">
+                     <h3>Administrative </h3>
+                    </a>
+                 </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job5.png" alt="">
+                     <h3>Waiter / waitress</h3>
+                    </a>
+                 </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job6.png" alt="">
+                     <h3>All-round warehouse </h3>
+                    </a>
+                 </div>
+                 <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job2.png" alt="">
+                     <h3>All-round store </h3>
+                    </a>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6">
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job7.png" alt="">
+                     <h3>Sampling</h3>
+                    </a>
+                </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job1.png" alt="">
+                     <h3>Cashier</h3>
+                    </a>
+                 </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job2.png" alt="">
+                     <h3>Order picker</h3>
+                    </a>
+                 </div>
+                 <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job7.png" alt="">
+                     <h3>IT Support</h3>
+                    </a>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6">
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job3.png" alt="">
+                     <h3>Cashier</h3>
+                    </a>
+                 </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job4.png" alt="">
+                     <h3>Sales Employee</h3>
+                    </a>
+                 </div>
+                <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job5.png" alt="">
+                     <h3>Cook</h3>
+                    </a>
+                 </div>
+                 <div class="recruitment-card">
+                    <a class="recruitment-a" href="">
+                     <img class="recruitment-img" src="img/job3.png" alt="">
+                     <h3>Kitchen porter</h3>
+                    </a>
+                 </div>
+             </div>
+    </div>
+    </section>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        window.onclick = function(event) {
+            const modalDreamJobs = document.getElementById('modalDreamJobs');
+            const modalPerfectEmploy = document.getElementById('modalPerfectEmploy');
+            if (event.target === modalDreamJobs) {
+                closeModal('modalDreamJobs');
+            } else if (event.target === modalPerfectEmploy) {
+                closeModal('modalPerfectEmploy');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
