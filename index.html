@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Two Column Layout with Nested Rows</title>
+    <title>Recruitment Page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         .container {
             display: flex;
@@ -209,8 +210,8 @@
             }
             .button-find {
                 margin-top: 7px !important;
-                margin-left: 37px !important;
-                width: 280px !important;
+                margin-left: 21px !important;
+                width: 311px !important;
             }
 
             .form-recruitment input,
@@ -220,6 +221,10 @@
                 width: 140px !important;
                 margin: 5px;
         
+            }
+
+            .form-recruitment {
+                margin-left: 0px !important;
             }
 
         }
@@ -460,6 +465,7 @@
         .form-recruitment {
         display: flex;
         flex-direction: column;
+        margin-left: 35px;
         }
 
         .form-recruitment label {
@@ -596,7 +602,7 @@
                             </div>
                             <div>
                                 <label for="dreamJobReference">Reference:</label>
-                    <input type="text" id="dreamJobReference" name="reference">
+                                <input type="text" id="dreamJobReference" name="reference">
                             </div>
                             <div>
                                 <label for="dreamJobComment">Additional Comment:</label>
@@ -604,6 +610,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="" style="text-align: center;">
+                            <div class="g-recaptcha" data-sitekey="6LfqRd4pAAAAALTfCGC9ZX67ji3eiotn69OPiFjj"></div>
+                        </div>
+                    </div>
+                    
                     <div class="col-md-12">
                         <div class="" style="text-align: center;">
                             <button type="submit" class="submit-btn">Submit</button>
@@ -677,6 +689,11 @@
                                 <label for="employeeCultureValues">Company Culture/Values:</label>
                                 <textarea id="employeeCultureValues" name="cultureValues" required></textarea>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="" style="text-align: center;">
+                            <div class="g-recaptcha" data-sitekey="6LfqRd4pAAAAALTfCGC9ZX67ji3eiotn69OPiFjj"></div>
                         </div>
                     </div>
                     <div class="col-md-12">
