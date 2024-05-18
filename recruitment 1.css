@@ -129,6 +129,68 @@
     text-decoration: none;
 }
 
+@media screen and (min-width: 1200px) {
+    /* CSS rules for large desktops */
+    body {
+        font-size: 18px;
+        padding: 20px;
+    }
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    /* CSS rules for desktops */
+    body {
+        font-size: 16px;
+        padding: 15px;
+    }
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    /* CSS rules for tablets */
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* CSS rules for mobile devices */
+    body {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* CSS rules for small mobile devices */
+    body {
+        font-size: 10px;
+        padding: 3px;
+    }
+    .container {
+        max-width: 100%;
+    }
+
+    .button-find {
+        margin-top: 7px !important;
+        margin-left: 11px !important;
+        width: 250px !important;
+    }
+}
+
+
 @media screen and (max-width: 480px) {
     /* CSS rules for small mobile devices */
     .button-find {
@@ -203,7 +265,7 @@
 
 
     .find-button{
-        background-color: #1F1F47;
+        background-color: red;
         height: 120px;
         padding: 5px;
         border-radius: 5px;
