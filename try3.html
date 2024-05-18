@@ -5,6 +5,365 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Column Layout with Nested Rows</title>
     <style>
+/* Container and Column Styles */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.column {
+    flex: 1;
+    position: relative; /* Ensure relative positioning for absolute child */
+}
+
+/* Image Styles */
+.image-two {
+    height: 250px;
+    width: 280px;
+    border-radius: 10px;
+    transition: transform .2s, z-index 0s;
+}
+.image-one {
+    height: 504px;
+    width: 600px;
+    border-radius: 10px;
+    transition: transform .2s, z-index 0s;
+}
+.image-two:hover, .image-one:hover {
+    transform: scale(1.1); 
+    z-index: 1;
+}
+
+/* Text on Image Hover */
+.text-recruitment {
+    position: absolute;
+    display: inline-flex;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1; /* Ensure the text is above the image */
+}
+.column:hover .text-recruitment {
+    opacity: 1; /* Show on hover */
+}
+
+/* Recruitment Section Styles */
+.recruitment-p {
+    margin-top: 54px;
+    margin-left: -65px;
+}
+.recruitment-bt {
+    height: 20px;
+    margin-top: 61px;
+    margin-left: 8px;
+}
+.recruitment-a {
+    margin: 4px;
+    display: flex;
+    text-decoration: none;
+    padding: 26px;
+    border: 1px solid #CDCDCD;
+    border-radius: 3px;
+    transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.recruitment-a:hover {
+    border: 1px solid #fff0;
+    box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+}
+.recruitment-img {
+    height: 50px;
+    width: 50px;
+}
+.recruitment-cate {
+    justify-content: space-around;
+    padding: 20px;
+}
+.recruitment-card {
+    height: 115px;
+    width: 301px;
+}
+
+/* Find Button Styles */
+.find-button {
+    background-color: red;
+    height: 100px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.find-a {
+    text-decoration: none;
+}
+.button-find {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    isolation: isolate;
+    margin: 27px 0 0 55px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 490px;
+    border-radius: 9999rem;
+    background: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+.button-find > span.text {
+    font-weight: bolder;
+    color: #121212;
+    width: 100%;
+    text-align: center;
+    padding: 12px 24px;
+    z-index: 2;
+    transition: color 200ms ease;
+}
+.button-find > div.overlay {
+    color: #ededed;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: inherit;
+    background: #242424;
+    position: absolute;
+    left: 1px;
+    z-index: 1;
+    transition: width 400ms ease;
+}
+.button-find:hover > span.text {
+    color: #ededed;
+}
+.button-find:hover > div.overlay {
+    width: calc(100% - 2px);
+}
+
+/* Modal Styling */
+.modal-recruitment {
+    display: none; /* Hide modal by default */
+    position: fixed;
+    z-index: 999; /* Make sure it appears above everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+.modal-content-recruitment {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Form Styling */
+.form-recruitment {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+}
+.form-recruitment label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.form-recruitment input,
+.form-recruitment textarea,
+.form-recruitment button {
+    height: 40px;
+    width: 203px;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form-recruitment input:focus,
+.form-recruitment textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+.form-recruitment button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-recruitment button:hover {
+    background-color: #0056b3;
+}
+.form-recruitment textarea {
+    resize: vertical;
+}
+.form-recruitment .submit-btn {
+    margin-top: 15px;
+}
+
+/* Responsive Styles */
+
+/* Mobile Devices */
+@media screen and (max-width: 767px) {
+    .image-two {
+        height: 74px;
+        width: 96px;
+    }
+    .image-one {
+        height: 150px;
+        width: 143px;
+    }
+    .recruitment-cate {
+        justify-content: space-around;
+        padding: 20px;
+        display: grid;
+    }
+    .text-recruitment {
+        font-size: 7px;
+    }
+    .recruitment-p {
+        margin-top: 19px;
+        margin-left: -19px;
+    }
+    .recruitment-bt {
+        font-size: 6px;
+        height: 13px;
+        margin-top: 14px;
+        margin-left: 4px;
+    }
+    .find-button {
+        height: 120px;
+        padding: 5px;
+    }
+    .button-find {
+        margin: 7px 0 0 21px !important;
+        width: 311px !important;
+    }
+    .form-recruitment input,
+    .form-recruitment textarea,
+    .form-recruitment button {
+        width: 140px !important;
+        margin: 5px;
+    }
+    .form-recruitment {
+        margin-left: 0px !important;
+    }
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .image-two {
+        height: 123px;
+        width: 191px;
+    }
+    .image-one {
+        height: 250px;
+        width: 361px;
+    }
+    .recruitment-cate {
+        justify-content: space-around;
+        padding: 20px;
+        display: ruby-text;
+    }
+    .text-recruitment {
+        font-size: 7px;
+    }
+    .recruitment-p {
+        margin-top: 19px;
+        margin-left: -19px;
+    }
+    .recruitment-bt {
+        font-size: 6px;
+        height: 13px;
+        margin-top: 14px;
+        margin-left: 4px;
+    }
+    .button-find {
+        margin-left: 44px !important;
+        width: 283px !important;
+    }
+}
+
+/* Desktops */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .image-two {
+        height: 147px;
+        width: 250px;
+    }
+    .image-one {
+        height: 300px;
+        width: 479px;
+    }
+    .recruitment-cate {
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .text-recruitment {
+        font-size: 7px;
+    }
+    .recruitment-p {
+        margin-top: 19px;
+        margin-left: -19px;
+    }
+    .recruitment-bt {
+        font-size: 6px;
+        height: 13px;
+        margin-top: 14px;
+        margin-left: 4px;
+    }
+    .recruitment-card {
+        width: 242px;
+    }
+    .button-find {
+        margin-left: 70px !important;
+        width: 283px !important;
+    }
+}
+
+/* Large Desktops */
+@media screen and (min-width: 1200px) {
+    /* You can add specific styles for large desktops here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .container {
             display: flex;
             justify-content: space-between;
